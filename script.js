@@ -3,7 +3,9 @@ document
   .addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent form from submitting and refreshing the page
 
-    const name = document.getElementById("name").value.trim();
+    let name = document.getElementById("name").value.trim();
+    name = name.replace(/\s+/g, "_"); // Replace spaces with underscores
+
     const resultDiv = document.getElementById("result");
 
     // Custom letters for specific names
@@ -38,30 +40,19 @@ document
       zunaid: "Not 'P'. you can't get a wife",
     };
 
-    const customNamesForBangladesh = [
-      "Sura",
-      "sura",
-      "AbdulAhad",
-      "Ahad",
-      "Nazim",
-      "Nayem",
-      "Ariyan",
-      "Rasa",
-      "progga",
-      "Progga",
-      "Junaid",
-      "junaid",
-      "zunaid",
-      "Rasamuntasir",
-      "rasa",
-    ]; // Add custom names for "Bangladesh"
+    // Function to check if any part of the name matches a custom name
+    function getCustomLetter(name) {
+      for (const key in customLetters) {
+        if (name.includes(key)) {
+          return customLetters[key];
+        }
+      }
+      return null;
+    }
 
-    let soulmateFirstLetter;
+    let soulmateFirstLetter = getCustomLetter(name);
 
-    // Check if the name is in the customLetters object
-    if (customLetters[name]) {
-      soulmateFirstLetter = customLetters[name]; // Use custom letter for the specific name
-    } else {
+    if (soulmateFirstLetter === null) {
       // Otherwise, generate a random letter
       const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
       const randomIndex = Math.floor(Math.random() * alphabets.length);
@@ -69,7 +60,7 @@ document
     }
 
     // If the entered name is in the custom names list, display "Bangladesh" as nationality
-    if (customNamesForBangladesh.includes(name)) {
+    if (getCustomLetter(name)) {
       resultDiv.innerHTML = `${name}, your future soulmate's name will start with "<strong>${soulmateFirstLetter}</strong>".<br><br>We think you might be from <strong>Bangladesh</strong>.`;
     } else {
       // Fetch nationality using the Nationalize API
@@ -125,7 +116,6 @@ document
             UZ: "Uzbekistan",
             VN: "Vietnam",
             YE: "Yemen",
-
             // Add more country codes and names as needed
           };
 
