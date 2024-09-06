@@ -50,6 +50,15 @@ document
       Charu: "U really want a Soulmate? 🥱",
       Caru: "U really want a Soulmate? 🥱",
       caru: "U really want a Soulmate? 🥱",
+
+      boishakhy: "Guu 💩",
+      Boishakhy: "Guu 💩",
+      shakhy: "Guu 💩",
+      Shakhy: "Guu 💩",
+      Afifa: "Guu 💩",
+      Ajmain: "Guu 💩",
+      afifa: "Guu 💩",
+      ajmain: "Guu 💩",
     };
 
     // Function to check if any part of the name matches a custom name
