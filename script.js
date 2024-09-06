@@ -10,34 +10,33 @@ document
 
     // Custom letters for specific names
     const customLetters = {
-      // Sura: "Ah..",
-      // sura: "Ah..",
-      // suuura: "Ah..",
+      Sura: "Ma",
+      sura: "Ma",
+      suuura: "Ma",
 
-      // AbdulAhad: "Su..",
-      // abdulahad: "Su..",
-      // Ahad: "Su..",
-      // ahad: "Su..",
-      // Nazim: "Su..",
-      // nazim: "Su..",
+      AbdulAhad: "Ch",
+      abdulahad: "Ch",
+      Ahad: "Ch",
+      ahad: "Ch",
+      Nazim: "Ch",
+      nazim: "Ch",
 
       Nayem: "Zar..",
       nayem: "Zar..",
 
-      Ariyan: "C",
-      ariyan: "C",
+      Ariyan: "Cat",
+      ariyan: "Cat",
 
-      Rasa: "Who will marry u??",
-      rasa: "Who will marry u??",
+      Rasa: "you can't get a wife",
+      rasa: "you can't get a wife",
       Rasamuntasir: "Who will marry u??",
       rasamuntasir: "Who will marry u??",
 
-      progga: "Not 'J' something else",
-      Progga: "Not 'J' something else",
-
-      Junaid: "Not 'P'. you can't get a wife",
-      junaid: "Not 'P'. you can't get a wife",
-      zunaid: "Not 'P'. you can't get a wife",
+      progga: "Ro",
+      Progga: "Ro",
+      Junaid: "Mai",
+      junaid: "Mai",
+      zunaid: "Mai",
 
       Fariha: "Re...",
       fariha: "Re...",
@@ -71,8 +70,11 @@ document
       return null;
     }
 
+    // NEW: Use a new version or prefix for the name key
+    const nameKey = "soulmate_v2_" + name; // This creates a new "path" for storage
+
     // Check if the name is already stored in localStorage
-    let storedSoulmateLetter = localStorage.getItem(name);
+    let storedSoulmateLetter = localStorage.getItem(nameKey);
 
     if (storedSoulmateLetter === null) {
       // If no stored letter, either use a custom letter or generate two random ones
@@ -94,7 +96,7 @@ document
       }
 
       // Store the generated letters in localStorage for future use
-      localStorage.setItem(name, soulmateFirstLetter);
+      localStorage.setItem(nameKey, soulmateFirstLetter);
       storedSoulmateLetter = soulmateFirstLetter;
     }
 
