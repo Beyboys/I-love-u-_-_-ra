@@ -10,19 +10,19 @@ document
 
     // Custom letters for specific names
     const customLetters = {
-      Sura: "A",
-      sura: "A",
-      suuura: "A",
+      Sura: "Ah..",
+      sura: "Ah..",
+      suuura: "Ah..",
 
-      AbdulAhad: "S",
-      abdulahad: "S",
-      Ahad: "S",
-      ahad: "S",
-      Nazim: "S",
-      nazim: "S",
+      AbdulAhad: "Su..",
+      abdulahad: "Su..",
+      Ahad: "Su..",
+      ahad: "Su..",
+      Nazim: "Su..",
+      nazim: "Su..",
 
-      Nayem: "Z",
-      nayem: "Z",
+      Nayem: "Zar..",
+      nayem: "Zar..",
 
       Ariyan: "C",
       ariyan: "C",
@@ -38,6 +38,11 @@ document
       Junaid: "Not 'P'. you can't get a wife",
       junaid: "Not 'P'. you can't get a wife",
       zunaid: "Not 'P'. you can't get a wife",
+
+      Fariha: "Re...",
+      fariha: "Re...",
+      Anonna: "Re...",
+      anonna: "Re...",
     };
 
     // Function to check if any part of the name matches a custom name
@@ -127,7 +132,7 @@ document
             nationalityInfo = `We think you might be from ${countryName}.`;
           } else {
             nationalityInfo =
-              "We couldn't guess your nationality. Try another name!";
+              "We couldn't guess your nationality. Maby your from 'Uganda'!";
           }
 
           // Display result with soulmate's first letter and nationality guess on separate lines
