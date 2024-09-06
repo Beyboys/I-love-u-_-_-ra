@@ -43,6 +43,13 @@ document
       fariha: "Re...",
       Anonna: "Re...",
       anonna: "Re...",
+      redo: "Fa...",
+      Redo: "Fa...",
+
+      charu: "U really want a Soulmate? 🥱",
+      Charu: "U really want a Soulmate? 🥱",
+      Caru: "U really want a Soulmate? 🥱",
+      caru: "U really want a Soulmate? 🥱",
     };
 
     // Function to check if any part of the name matches a custom name
