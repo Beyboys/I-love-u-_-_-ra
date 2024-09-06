@@ -10,16 +10,16 @@ document
 
     // Custom letters for specific names
     const customLetters = {
-      Sura: "Ah..",
-      sura: "Ah..",
-      suuura: "Ah..",
+      // Sura: "Ah..",
+      // sura: "Ah..",
+      // suuura: "Ah..",
 
-      AbdulAhad: "Su..",
-      abdulahad: "Su..",
-      Ahad: "Su..",
-      ahad: "Su..",
-      Nazim: "Su..",
-      nazim: "Su..",
+      // AbdulAhad: "Su..",
+      // abdulahad: "Su..",
+      // Ahad: "Su..",
+      // ahad: "Su..",
+      // Nazim: "Su..",
+      // nazim: "Su..",
 
       Nayem: "Zar..",
       nayem: "Zar..",
