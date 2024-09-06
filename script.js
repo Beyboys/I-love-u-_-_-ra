@@ -62,18 +62,36 @@ document
       return null;
     }
 
-    let soulmateFirstLetter = getCustomLetter(name);
+    // Check if the name is already stored in localStorage
+    let storedSoulmateLetter = localStorage.getItem(name);
 
-    if (soulmateFirstLetter === null) {
-      // Otherwise, generate a random letter
-      const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-      const randomIndex = Math.floor(Math.random() * alphabets.length);
-      soulmateFirstLetter = alphabets[randomIndex];
+    if (storedSoulmateLetter === null) {
+      // If no stored letter, either use a custom letter or generate two random ones
+      let soulmateFirstLetter = getCustomLetter(name);
+
+      if (soulmateFirstLetter === null) {
+        // Generate two random letters (first uppercase, second lowercase)
+        const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+        const randomIndex1 = Math.floor(Math.random() * alphabets.length);
+        const randomUppercase = alphabets[randomIndex1];
+
+        const lowercaseAlphabets = "abcdefghijklmnopqrstuvwxyz".split("");
+        const randomIndex2 = Math.floor(
+          Math.random() * lowercaseAlphabets.length
+        );
+        const randomLowercase = lowercaseAlphabets[randomIndex2];
+
+        soulmateFirstLetter = randomUppercase + randomLowercase; // Combine uppercase and lowercase letters
+      }
+
+      // Store the generated letters in localStorage for future use
+      localStorage.setItem(name, soulmateFirstLetter);
+      storedSoulmateLetter = soulmateFirstLetter;
     }
 
     // If the entered name is in the custom names list, display "Bangladesh" as nationality
     if (getCustomLetter(name)) {
-      resultDiv.innerHTML = `${name}, your future soulmate's name will start with "<strong>${soulmateFirstLetter}</strong>".<br><br>We think you might be from <strong>Bangladesh</strong>.`;
+      resultDiv.innerHTML = `${name}, your future soulmate's name will start with "<strong>${storedSoulmateLetter}</strong>".<br><br>We think you might be from <strong>Bangladesh</strong>.`;
     } else {
       // Fetch nationality using the Nationalize API
       fetch(`https://api.nationalize.io?name=${name}`)
@@ -139,15 +157,15 @@ document
             nationalityInfo = `We think you might be from ${countryName}.`;
           } else {
             nationalityInfo =
-              "We couldn't guess your nationality. Maby your from 'Uganda'!";
+              "We couldn't guess your nationality. Maybe you're from 'Uganda'!";
           }
 
           // Display result with soulmate's first letter and nationality guess on separate lines
-          resultDiv.innerHTML = `${name}, your future soulmate's name will start with "<strong>${soulmateFirstLetter}</strong>".<br><br>${nationalityInfo}`;
+          resultDiv.innerHTML = `${name}, your future soulmate's name will start with "<strong>${storedSoulmateLetter}</strong>".<br><br>${nationalityInfo}`;
         })
         .catch((error) => {
           console.error("Error fetching nationality data:", error);
-          resultDiv.innerHTML = `${name}, your future soulmate's name will start with "<strong>${soulmateFirstLetter}</strong>".<br><br>We couldn't guess your nationality due to a technical issue.`;
+          resultDiv.innerHTML = `${name}, your future soulmate's name will start with "<strong>${storedSoulmateLetter}</strong>".<br><br>We couldn't guess your nationality due to a technical issue.`;
         });
     }
   });
